@@ -1,0 +1,24 @@
+{
+  "name": "node-server-helloworld",
+  "version": "1.0.0",
+  "description": "The first Node JS server.",
+  "main": "server.js",
+  "dependencies": {
+    "nodemon": "^2.0.12"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Easyanton/Node-Server-HelloWorld.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Easyanton/Node-Server-HelloWorld/issues"
+  },
+  "homepage": "https://github.com/Easyanton/Node-Server-HelloWorld#readme"
+}
