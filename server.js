@@ -1,13 +1,8 @@
 console.log("Hello from log");
 
 const http = require("http");
+const controller = require("./controller");
 
-const server = http.createServer(function (req, res)
-{
-    res.statusCode = 200;
-    res.setHeader("Content-type", "text/plain");
-    res.write("Hello from server...");
-    res.end();
-});
+const server = http.createServer(controller);
 
 server.listen(8000);
