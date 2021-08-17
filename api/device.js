@@ -7,14 +7,14 @@ module.exports =
     {
         handler: function (req, res)
         {
-            send(req, res, { says: "Device 2", method: req.method });
+            send(req, res, { says: "Device found", method: req.method });
         }
     },
     POST:
     {
         handler: function (req, res)
         {
-            send(req, res, { says: "Device 2", method: req.method });
+            send(req, res, { says: "Device found", method: req.method });
         }
     }
 

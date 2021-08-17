@@ -11,7 +11,6 @@ module.exports = function (req, res)
     logger(req, res);
 
     // URL manipulation. (Get endpoint)
-    //const url = req.url;
     const endpoint = new URL(req.url, "http://localhost:8000").pathname;
     //helpers.send(req, res, endpoint);
 
@@ -28,17 +27,16 @@ module.exports = function (req, res)
 
 
     // Api check.    
-    const apiRX = /(?<ep>^\/api\/\w+)(?<id>\/?[a-z,0-9]*?)$/i;
+    const apiRX = /(?<route>^\/api\/\w+)(?<id>\/?[a-z,0-9]*?)$/i;
     result = endpoint.match(apiRX);
 
     if (result)
     {
-        console.log(result.groups.ep);
         // Api check        
-        if (api[result.groups.ep])
+        if (api[result.groups.route])
         {
             // Method check (ex get)            
-            if (api[result.groups.ep][req.method])
+            if (api[result.groups.route][req.method])
             {
 
                 console.log(result);
@@ -46,43 +44,28 @@ module.exports = function (req, res)
                 // Param check
                 if (result.groups.id == '')
                 {
-                    api[result.groups.ep][req.method].handler(req, res);
+                    api[result.groups.route][req.method].handler(req, res);
                     return;
                 }
 
-                if (result.groups.id.substr(1) == api[result.groups.ep]["ID"])
+                if (result.groups.id.substr(1) == api[result.groups.route]["ID"])
                 {
-                    api[result.groups.ep][req.method].handler(req, res);
+                    api[result.groups.route][req.method].handler(req, res);
                     return;
                 }
 
-                helpers.send(req, res, { msg: "Api Pram ERROR" }, 405);
+                helpers.send(req, res, { msg: "Api Pram ERROR" }, 404);
                 return;
             }
 
             helpers.send(req, res, { msg: "Api mothod not found" }, 405);
         }
 
-        helpers.send(req, res, { msg: "Api not found" }, 405);
+        helpers.send(req, res, { msg: "Api not found" }, 404);
         console.log(result);
         return;
     }
 
-    // if (endpoint === "/index.html")
-    // {
-    //     helpers.sendFile(req, res, "./static/index.html");
-    //     return;
-    // }
-
     helpers.send(req, res, { message: `Ressourse out of scope'${endpoint}' not awailable` }, 404);
-
-    //Startup via function
-    //helpers.send(req, res, { Message: "Here is the Json message" });
-
-    // Startup.
-    // res.statusCode = 200;
-    // res.setHeader("Content-type", "text/plain");
-    // res.write("Hello from server, in a new file...");
-    // res.end();
 }
 
