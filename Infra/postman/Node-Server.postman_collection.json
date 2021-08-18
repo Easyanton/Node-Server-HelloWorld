@@ -1,0 +1,25 @@
+{
+	"info": {
+		"_postman_id": "0184d126-697f-4a8c-9b9a-3508f5ab3585",
+		"name": "Node-Server",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get device by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000"
+				}
+			},
+			"response": []
+		}
+	]
+}
