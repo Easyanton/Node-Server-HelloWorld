@@ -1,22 +1,49 @@
 # Node-Server
 
 ## Project
----
-This is a Node.js server, made for "serverside scripting" at TEC by JOnas Fuhlendorff
+This is a Node.js server, made in "serverside scripting" at TEC by Jonas Fuhlendorff.
+
+Getting started with the project: 
+
+<strong>Build project:</strong> \
+``npm install``
+
+<strong>Start database:</strong> \
+See MongoDB section.
+
+<strong>Run project:</strong> \
+``npm start``
+
+
+## Endpoints
+ http://localhost:8000/index.html
 
 ## API
+The API base route for the API is: \
+http://localhost:8000/api/
 
---- 
+The calls are structuret like the two examples bellow.
 
-## MongoDB docker container.
+http://localhost:8000/api/{resource}/
 
---- 
-<strong>Docker commands:</strong> \
-Start MongoDB container: \
-Open Powershell and cd to the {root}/docker folder and run compose file with command ``docker-compose up``
+http://localhost:8000/api/{resource}/{param)}
 
-Stop Mongo container:\
-Open Powershell and run ``docker container stop {container id}``
+### Postman
+All API commands can be "imported" to postman by the script in {root}/infra/postman/Node-Server.postman_collection.json. This script contains all possible routs and commands, the API contains.
 
-Remove Mongo container:\
+## MongoDB.
+
+The projects database is a MongoDB running in a docker container. To start the docker container, look at the "Docker commands" section.
+
+Connection string: ``mongodb://localhost:27017/?readPreference=primary&appname=mongodb-vscode%200.6.10&directConnection=true&ssl=false``
+
+### Docker Commands
+
+<strong>Start MongoDB container:</strong> \
+Open Powershell and cd to the {root}/infra/docker folder and run compose file with command ``docker-compose up``
+
+<strong>Stop Mongo container:</strong> \
+Open Powershell and cd to the {root}/infra/docker folder and run ``docker-compose down``
+
+<strong>Remove Mongo container:</strong> \
 Open Powershell and run ``docker container rm {container id}``

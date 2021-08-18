@@ -4,6 +4,7 @@
   "description": "The first Node JS server.",
   "main": "server.js",
   "dependencies": {
+    "mongodb": "^4.1.0",
     "nodemon": "^2.0.12"
   },
   "devDependencies": {},
