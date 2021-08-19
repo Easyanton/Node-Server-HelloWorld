@@ -3,16 +3,22 @@
 ## Project
 This is a Node.js server, made in "serverside scripting" at TEC by Jonas Fuhlendorff.
 
-Getting started with the project: 
+## Quickstart!
 
-<strong>Build project:</strong> \
-``npm install``
+Instruction for quick start the project.
 
-<strong>Start database:</strong> \
-See MongoDB section.
+<strong> Start database </strong> \
+ Start ``docker desktop`` \
+ Run ``startDatabase.bat`` script from {root}/infra/docker/startDatabase.bat \
+ This will start the database and all its need. There is no need for doing anything else. for more information, look at section "MongoDB" and "Docker commands".
 
-<strong>Run project:</strong> \
-``npm start``
+<strong>Start node server</strong> \
+Run ``npm install`` from CMD in project folder {root} \
+Run ``npm start`` \
+This will start the Node.js server and create a database in the MongoDB server, if it not alredy exist.
+
+<strong>Test from postman</strong> \
+Import ``Node-Server.postman_collection.json`` collection in postman from {root}/infra/postman/Node-Server.postman_collection.json. Here is all the http calls, that can be made. Look at the image bellow.
 
 
 ## Endpoints
@@ -40,7 +46,7 @@ Connection string: ``mongodb://localhost:27017/?readPreference=primary&appname=m
 ### Docker Commands
 
 <strong>Start MongoDB container:</strong> \
-Open Powershell and cd to the {root}/infra/docker folder and run compose file with command ``docker-compose up``
+Open Powershell and cd to the {root}/infra/docker folder and run compose file with command ``docker-compose up`` or run the ``startDatabase.bat`` script from {root}/infra/docker/startDatabase.bat.
 
 <strong>Stop Mongo container:</strong> \
 Open Powershell and cd to the {root}/infra/docker folder and run ``docker-compose down``

@@ -46,3 +46,38 @@ exports.streamFile = function (req, res, filePath)
 
     stream.pipe(res);
 }
+
+exports.getParams = function (req) {
+    return new Promise(function (resolve, reject) {
+        let body = "";
+        req.on("data", function (chunk) {
+            body += chunk;
+        });
+        req.on("end", function () {
+            body = JSON.parse(body);
+            resolve(body);
+        })
+        req.on("error", function (err) {
+            console.log("Get data ERROR.");
+            reject(err);
+        })
+    })
+}
+
+exports.getJSONData = function (req) {
+    let body = "";
+    return new Promise((resolve, reject) => {
+        req.on("data", (chunc) => {
+            body += chunc;
+        })
+        req.on("end", () => {
+            body = JSON.parse(body);
+            resolve(body);
+        })
+        req.on("error", err => {
+            console.log("Get Json ERROR");
+            console.log(err);
+            reject(err)
+        })
+    })
+}

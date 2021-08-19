@@ -1,0 +1,1 @@
+Powershell.exe docker-compose up

@@ -44,15 +44,20 @@ module.exports = function (req, res)
                 // Param check
                 if (result.groups.id == '')
                 {
-                    api[result.groups.route][req.method].handler(req, res);
+                    api[result.groups.route][req.method].handler(req, res, '');
+                    return;
+                }
+                else
+                {
+                    api[result.groups.route][req.method].handler(req, res, result.groups.id);
                     return;
                 }
 
-                if (result.groups.id.substr(1) == api[result.groups.route]["ID"])
-                {
-                    api[result.groups.route][req.method].handler(req, res);
-                    return;
-                }
+                // if (result.groups.id.substr(1) == api[result.groups.route]["ID"])
+                // {
+                //     api[result.groups.route][req.method].handler(req, res, result.groups.id);
+                //     return;
+                // }
 
                 helpers.send(req, res, { msg: "Api Pram ERROR" }, 404);
                 return;
