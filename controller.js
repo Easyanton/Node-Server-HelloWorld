@@ -9,10 +9,8 @@ api["/api/device"] = require("./api/device");
 module.exports = function (req, res)
 {
     logger(req, res);
-
-    // URL manipulation. (Get endpoint)
+    
     const endpoint = new URL(req.url, "http://localhost:8000").pathname;
-    //helpers.send(req, res, endpoint);
 
     // Static file check.
     const reqEx = /^\/((css|img|js)\/)?[\w-]+\.(html|css|png|jpe?g|js|gif|tiff|svg|bmp)$/i;
@@ -52,12 +50,6 @@ module.exports = function (req, res)
                     api[result.groups.route][req.method].handler(req, res, result.groups.id);
                     return;
                 }
-
-                // if (result.groups.id.substr(1) == api[result.groups.route]["ID"])
-                // {
-                //     api[result.groups.route][req.method].handler(req, res, result.groups.id);
-                //     return;
-                // }
 
                 helpers.send(req, res, { msg: "Api Pram ERROR" }, 404);
                 return;
